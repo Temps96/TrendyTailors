@@ -206,3 +206,281 @@ trendy-tailors/
 <head>
     <meta charset="UTF-8">
     <meta name="viewport
+trendy-tailors/
+│
+├── public/
+│   ├── styles.css
+│   ├── script.js
+│   └── images/
+├── views/
+│   ├── index.ejs
+│   ├── shoes.ejs
+│   ├── shirts.ejs
+│   ├── long-sleeves.ejs
+│   ├── pants-shorts.ejs
+│   ├── accessories.ejs
+│   ├── sales.ejs
+│   ├── product.ejs
+│   ├── cart.ejs
+│   └── login.ejs
+├── models/
+│   ├── user.js
+│   └── product.js
+├── routes/
+│   ├── index.js
+│   ├── product.js
+│   └── user.js
+├── app.js
+└── package.json
+mkdir trendy-tailors
+cd trendy-tailors
+npm init -y
+npm install express mongoose ejs body-parser express-session bcryptjs passport passport-local connect-flash
+const express = require('express');
+const mongoose = require('mongoose');
+const passport = require('passport');
+const session = require('express-session');
+const flash = require('connect-flash');
+const bodyParser = require('body-parser');
+const app = express();
+
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost/trendy-tailors', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+
+// Middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static('public'));
+app.set('view engine', 'ejs');
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+// Routes
+app.use('/', require('./routes/index'));
+app.use('/products', require('./routes/product'));
+app.use('/users', require('./routes/user'));
+
+// Server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+
+const UserSchema = new mongoose.Schema({
+    username: { type: String, required: true },
+    password: { type: String, required: true }
+});
+
+UserSchema.methods.generateHash = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+
+UserSchema.methods.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.password);
+};
+
+module.exports = mongoose.model('User', UserSchema);
+const mongoose = require('mongoose');
+
+const ProductSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    category: { type: String, required: true },
+    description: { type: String, required: true },
+    price: { type: Number, required: true },
+    image: { type: String, required: true }
+});
+
+module.exports = mongoose.model('Product', ProductSchema);
+const express = require('express');
+const router = express.Router();
+
+// Home Page
+router.get('/', (req, res) => {
+    res.render('index');
+});
+
+module.exports = router;
+const express = require('express');
+const router = express.Router();
+const Product = require('../models/product');
+
+// Products Pages
+router.get('/:category', (req, res) => {
+    const category = req.params.category;
+    Product.find({ category: category }, (err, products) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render(category, { products: products });
+        }
+    });
+});
+
+// Single Product Page
+router.get('/:category/:id', (req, res) => {
+    Product.findById(req.params.id, (err, product) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('product', { product: product });
+        }
+    });
+});
+
+module.exports = router;
+const express = require('express');
+const router = express.Router();
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const User = require('../models/user');
+
+// Register User
+router.post('/register', (req, res) => {
+    const { username, password } = req.body;
+    const newUser = new User({ username, password });
+    newUser.password = newUser.generateHash(password);
+    newUser.save((err) => {
+        if (err) {
+            console.log(err);
+            res.redirect('/register');
+        } else {
+            res.redirect('/login');
+        }
+    });
+});
+
+// Login User
+router.post('/login', passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true
+}));
+
+// Logout User
+router.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/');
+});
+
+passport.use(new LocalStrategy((username, password, done) => {
+    User.findOne({ username: username }, (err, user) => {
+        if (err) return done(err);
+        if (!user) return done(null, false, { message: 'Incorrect username.' });
+        if (!user.validPassword(password)) return done(null, false, { message: 'Incorrect password.' });
+        return done(null, user);
+    });
+}));
+
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+    User.findById(id, (err, user) => {
+        done(err, user);
+    });
+});
+
+module.exports = router;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+document.addEventListener('DOMContentLoaded', function() {
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const cartCount = document.getElementById('cart-count');
+    let cart = [];
+
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const productId = this.dataset.productId;
+            cart.push(productId);
+            cartCount.innerText = cart.length;
+            alert('Product added to cart!');
+        });
+    });
+});
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trendy Tailors</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Trendy Tailors</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/products/shoes">Shoes</a></li>
+                <li><a href="/products/shirts">Shirts</a></li>
+                <li><a href="/products/long-sleeves">Long Sleeves/Sweaters</a></li>
+                <li><a href="/products/pants-shorts">Pants/Shorts</a></li>
+                <li><a href="/products/accessories">Accessories</a></li>
+                <li><a href="/products/sales">Sales</a></li>
+                <li><a href="/users/login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Welcome to Trendy Tailors</h2>
+        <p>Discover the latest trends in fashion!</p>
+    </main>
+    <footer>
+        <p>&copy; 2024 Trendy Tailors</p>
+    </footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device
