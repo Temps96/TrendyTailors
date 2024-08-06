@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trendy Tailors</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Trendy Tailors</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shoes.html">Shoes</a></li>
+                <li><a href="shirts.html">Shirts</a></li>
+                <li><a href="long-sleeves.html">Long Sleeves/Sweaters</a></li>
+                <li><a href="pants-shorts.html">Pants/Shorts</a></li>
+                <li><a href="accessories.html">Accessories</a></li>
+                <li><a href="sales.html">Sales</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Welcome to Trendy Tailors</h2>
+        <p>Discover the latest trends in fashion!</p>
+    </main>
+    <footer>
+        <p>&copy; 2024 Trendy Tailors</p>
+    </footer>
+</body>
+</html>
+trendy-tailors/
+│
+├── index.html
+├── shoes.html
+├── shirts.html
+├── long-sleeves.html
+├── pants-shorts.html
+├── accessories.html
+├── sales.html
+├── styles.css
+└── script.js
