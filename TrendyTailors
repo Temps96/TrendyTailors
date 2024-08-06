@@ -1,3 +1,14 @@
+trendy-tailors/
+│
+├── index.html
+├── shoes.html
+├── shirts.html
+├── long-sleeves.html
+├── pants-shorts.html
+├── accessories.html
+├── sales.html
+├── styles.css
+└── script.js
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,15 +40,169 @@
         <p>&copy; 2024 Trendy Tailors</p>
     </footer>
 </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoes - Trendy Tailors</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Shoes</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shoes.html">Shoes</a></li>
+                <li><a href="shirts.html">Shirts</a></li>
+                <li><a href="long-sleeves.html">Long Sleeves/Sweaters</a></li>
+                <li><a href="pants-shorts.html">Pants/Shorts</a></li>
+                <li><a href="accessories.html">Accessories</a></li>
+                <li><a href="sales.html">Sales</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Our Shoes Collection</h2>
+        <p>Explore our wide range of stylish shoes.</p>
+    </main>
+    <footer>
+        <p>&copy; 2024 Trendy Tailors</p>
+    </footer>
+</body>
 </html>
-trendy-tailors/
-│
-├── index.html
-├── shoes.html
-├── shirts.html
-├── long-sleeves.html
-├── pants-shorts.html
-├── accessories.html
-├── sales.html
-├── styles.css
-└── script.js
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shirts - Trendy Tailors</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Shirts</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shoes.html">Shoes</a></li>
+                <li><a href="shirts.html">Shirts</a></li>
+                <li><a href="long-sleeves.html">Long Sleeves/Sweaters</a></li>
+                <li><a href="pants-shorts.html">Pants/Shorts</a></li>
+                <li><a href="accessories.html">Accessories</a></li>
+                <li><a href="sales.html">Sales</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Our Shirts Collection</h2>
+        <p>Explore our wide range of stylish shirts.</p>
+    </main>
+    <footer>
+        <p>&copy; 2024 Trendy Tailors</p>
+    </footer>
+</body>
+</html>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Long Sleeves/Sweaters - Trendy Tailors</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Long Sleeves/Sweaters</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shoes.html">Shoes</a></li>
+                <li><a href="shirts.html">Shirts</a></li>
+                <li><a href="long-sleeves.html">Long Sleeves/Sweaters</a></li>
+                <li><a href="pants-shorts.html">Pants/Shorts</a></li>
+                <li><a href="accessories.html">Accessories</a></li>
+                <li><a href="sales.html">Sales</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Our Long Sleeves/Sweaters Collection</h2>
+        <p>Explore our wide range of stylish long sleeves and sweaters.</p>
+    </main>
+    <footer>
+        <p>&copy; 2024 Trendy Tailors</p>
+    </footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pants/Shorts - Trendy Tailors</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Pants/Shorts</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shoes.html">Shoes</a></li>
+                <li><a href="shirts.html">Shirts</a></li>
+                <li><a href="long-sleeves.html">Long Sleeves/Sweaters</a></li>
+                <li><a href="pants-shorts.html">Pants/Shorts</a></li>
+                <li><a href="accessories.html">Accessories</a></li>
+                <li><a href="sales.html">Sales</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Our Pants/Shorts Collection</h2>
+        <p>Explore our wide range of stylish pants and shorts.</p>
+    </main>
+    <footer>
+        <p>&copy; 2024 Trendy Tailors</p>
+    </footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessories - Trendy Tailors</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Accessories</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shoes.html">Shoes</a></li>
+                <li><a href="shirts.html">Shirts</a></li>
+                <li><a href="long-sleeves.html">Long Sleeves/Sweaters</a></li>
+                <li><a href="pants-shorts.html">Pants/Shorts</a></li>
+                <li><a href="accessories.html">Accessories</a></li>
+                <li><a href="sales.html">Sales</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Our Accessories Collection</h2>
+        <p>Explore our wide range of stylish accessories.</p>
+    </main>
+    <footer>
+        <p>&copy; 2024 Trendy Tailors</p>
+    </footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport
